@@ -1,0 +1,24 @@
+alias vim="nvim"
+alias rake="bundle exec rake"
+alias oo="open ."
+
+alias ls="ls -Gp"
+alias la="ls -la"
+alias lsd="ls -l | grep "^d""
+alias l="ls -l"
+
+# Git
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gb="git branch"
+alias gp="git push"
+alias glog="git log --graph --oneline --decorate"
+
+# Lazy navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
