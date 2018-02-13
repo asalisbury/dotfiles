@@ -3,11 +3,11 @@
 set -e
 
 log(){
-  echo -e "$(tput setaf 6)> $*$(tput sgr0)" 
+  echo -e "$(tput setaf 6)> $*$(tput sgr0)"
 }
 
 warn(){
-  echo -e "$(tput setaf 1)> $*$(tput sgr0)" 
+  echo -e "$(tput setaf 1)> $*$(tput sgr0)"
 }
 
 header(){
@@ -55,12 +55,12 @@ ensure_directory(){
   fi
 }
 
-ensure_repo(){ 
+ensure_repo(){
   local repo_path=$1
   local repo_url=$2
-  
+
   ensure_directory $repo_path
-  
+
   (
     cd "$repo_path"
     if git rev-parse --is-inside-work-tree > /dev/null && [ "$repo_path" =  "$(git rev-parse --show-toplevel)" ]
@@ -102,7 +102,7 @@ header "## Setting up packages ##"
 
 # Shell
 ensure_repo ~/.oh-my-zsh git@github.com:robbyrussell/oh-my-zsh.git
-ensure_repo ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git 
+ensure_repo ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
 
 # Pure
 ensure_repo ~/.oh-my-zsh/custom/plugins/pure git@github.com:sindresorhus/pure.git
@@ -139,6 +139,7 @@ declare -a formulae=(
   git
   hub
   ripgrep
+  tldr
   tig
   tmux
   tree

@@ -30,6 +30,7 @@ install fzf
 install git
 install hub
 install ripgrep
+install tldr
 install tig
 install tmux
 install tree
