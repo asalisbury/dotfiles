@@ -29,8 +29,21 @@ fi
 . ~/bin/z.sh
 
 # Set editor
-export EDITOR=nvim
-export GIT_EDITOR=nvim
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE="32768"
+export HISTFILESIZE="${HISTSIZE}"
+
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL="ignoreboth"
+
+# Enable persistent REPL history for node
+NODE_REPL_HISTORY_FILE=~/.node_history
+
+# Increase node REPL history size from default of 1000
+NODE_REPL_HISTORY_SIZE="32768"
 
 # Use FZF if it's around
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
