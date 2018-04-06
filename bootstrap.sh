@@ -122,7 +122,7 @@ source ~/.nvm/install.sh
 
 header "## Homebrew ##"
 
-read -n1 -p "Do you want to install Homebrew? [y,n]" doit
+read -n1 -p "Do you want to install Homebrew? [y,n] " doit
 case $doit in
   y|Y) ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ;;
   n|N) echo " Skipping" ;;
