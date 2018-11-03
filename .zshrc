@@ -47,3 +47,6 @@ NODE_REPL_HISTORY_SIZE="32768"
 
 # Use FZF if it's around
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# dev
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
