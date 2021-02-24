@@ -55,6 +55,11 @@ ensure_directory(){
   fi
 }
 
+header "## Installing oh-my-zsh ##"
+apt install zsh
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 header "## Setting up config files ##"
 
 # Config files
