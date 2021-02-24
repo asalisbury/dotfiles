@@ -1,8 +1,5 @@
 .DS_Store
 .env
-.idea
 node_modules
-*.sublime-project
-*.sublime-workspace
 npm-debug.log
 yarn-error.log

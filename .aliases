@@ -12,9 +12,11 @@ alias g="git"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
+alias gco="git checkout"
 alias gb="git branch"
-alias gp="git push"
-alias glog="git log --graph --oneline --decorate"
+alias gph="git push"
+alias gpl="git pull"
+alias gg="git log --graph --oneline --decorate"
 
 # Lazy navigation
 alias ..="cd .."
