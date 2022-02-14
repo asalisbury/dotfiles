@@ -6,10 +6,6 @@ log(){
   echo -e "$(tput setaf 6)> $*$(tput sgr0)"
 }
 
-warn(){
-  echo -e "$(tput setaf 1)> $*$(tput sgr0)"
-}
-
 header(){
   content="$*"; printf -v line '%*s' "${#content}";
   echo -e "$(tput bold)$(tput setaf 5)${line// /#}$(tput sgr0)"
@@ -17,11 +13,11 @@ header(){
   echo -e "$(tput bold)$(tput setaf 5)${line// /#}$(tput sgr0)"
 }
 
-ensure_copy(){
+ensure_clone(){
   local source=$1
   local destination=$2
 
-  if [ -h "$destination" ]
+  if [ -e "$destination" ]
   then
     log "$destination already exists"
   else
@@ -30,16 +26,16 @@ ensure_copy(){
   fi
 }
 
-ensure_symlink(){
+ensure_copy(){
   local source=$1
   local destination=$2
 
-  if [ -h "$destination" ]
+  if [ -e "$destination" ]
   then
-    log "$destination is already symlinked"
+    log "$destination already exists"
   else
-    log "Symlinking $source to $destination"
-    ln -s "$source" "$destination"
+    log "Cloning $source to $destination"
+    git clone "$source" "$destination"
   fi
 }
 
@@ -55,11 +51,6 @@ ensure_directory(){
   fi
 }
 
-header "## Installing oh-my-zsh ##"
-apt install zsh
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 header "## Setting up config files ##"
 
 # Config files
@@ -68,9 +59,18 @@ ensure_copy ./.bash_profile ~/.bash_profile
 ensure_copy ./.bashrc ~/.bashrc
 ensure_directory ~/.config/nvim
 ensure_copy ./.nvimrc ~/.config/nvim/init.vim
+ensure_clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 ensure_copy ./.zshrc ~/.zshrc
 ensure_copy ./.gitconfig ~/.gitconfig
 ensure_copy ./.gitignore ~/.gitignore
 ensure_copy ./.hushlogin ~/.hushlogin
+
+header "## Installing oh-my-zsh ##"
+if [ -d ~/.oh-my-zsh ]
+then
+  log "oh-my-zsh is already installed. Either remove ~/.oh-my-zsh and re-run the bootstrap, or ignore this warning."
+else
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 header "## ☯ Install complete ☯ ##"
