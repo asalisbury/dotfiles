@@ -54,21 +54,21 @@ ensure_directory(){
 header "## Setting up config files ##"
 
 # Config files
-ensure_copy ./.aliases ~/.aliases
-ensure_copy ./.bash_profile ~/.bash_profile
-ensure_copy ./.bashrc ~/.bashrc
-ensure_directory ~/.config/nvim
-ensure_copy ./.nvimrc ~/.config/nvim/init.vim
-ensure_clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-ensure_copy ./.zshrc ~/.zshrc
-ensure_copy ./.gitconfig ~/.gitconfig
-ensure_copy ./.gitignore ~/.gitignore
-ensure_copy ./.hushlogin ~/.hushlogin
+ensure_copy ./aliases $HOME/.aliases
+ensure_copy ./bash_profile $HOME/.bash_profile
+ensure_copy ./bashrc $HOME/.bashrc
+ensure_directory $HOME/.config/nvim
+ensure_copy ./nvimrc $HOME/.config/nvim/init.vim
+ensure_clone https://github.com/VundleVim/Vundle.vim.git $HOME/.config/nvim/bundle/Vundle.vim
+ensure_copy ./zshrc $HOME/.zshrc
+ensure_copy ./gitconfig $HOME/.gitconfig
+ensure_copy ./gitignore $HOME/.gitignore
+ensure_copy ./hushlogin $HOME/.hushlogin
 
 header "## Installing oh-my-zsh ##"
-if [ -d ~/.oh-my-zsh ]
+if [ -d $HOME/.oh-my-zsh ]
 then
-  log "oh-my-zsh is already installed. Either remove ~/.oh-my-zsh and re-run the bootstrap, or ignore this warning."
+  log "oh-my-zsh is already installed. Either remove $HOME/.oh-my-zsh and re-run the bootstrap, or ignore this warning."
 else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
