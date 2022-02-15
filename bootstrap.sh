@@ -13,7 +13,7 @@ header(){
   echo -e "$(tput bold)$(tput setaf 5)${line// /#}$(tput sgr0)"
 }
 
-ensure_clone(){
+ensure_copy(){
   local source=$1
   local destination=$2
 
@@ -26,7 +26,7 @@ ensure_clone(){
   fi
 }
 
-ensure_copy(){
+ensure_clone(){
   local source=$1
   local destination=$2
 
